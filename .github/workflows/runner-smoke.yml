@@ -1,0 +1,20 @@
+name: Runner smoke test
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  smoke:
+    name: Mac ARM64 runner smoke
+    runs-on: [self-hosted, macOS, ARM64, b2m-mac-mini]
+    timeout-minutes: 3
+    steps:
+      - name: Confirm runner execution
+        shell: bash
+        run: |
+          uname -s
+          uname -m
+          /bin/bash --version | head -n 1
+          printf 'Runner smoke test passed\n'
